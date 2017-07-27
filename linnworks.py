@@ -7,11 +7,15 @@ import xlrd
 import tkinter as tk
 from tkinter import filedialog
 
-
-
-def read_filenames_from_csv(file):
+def read_filenames_from_csv(file, col):
+    '''
     
-
+    :param file: The CSV file containing the barcodes to search
+    :param col: The column number of the barcodes in the CSV file, 0 = A, 1 = B etc.  
+    :return: List of barcodes to be searched
+    
+    '''
+    
     search_items = []
     start = 1
     workbook = xlrd.open_workbook(file, on_demand=True)
@@ -19,14 +23,15 @@ def read_filenames_from_csv(file):
     numRows = worksheet.nrows
 
     while start < numRows:
-        search_items.append(int(worksheet.cell(start, 0).value))
+        search_items.append(int(worksheet.cell(start, col).value))
         start += 1
 
     return search_items
 
 def amazonbarcodesearch(list, mkt, idtype):
+    
     '''
-
+    
     :param list: list of barcodes to search inside Amazon
     :param mkt: Marketplace ID
     :param idtype: Barcode Type, EG UPC, EAN
@@ -38,9 +43,9 @@ def amazonbarcodesearch(list, mkt, idtype):
     FR	                A13V1IB3VIYZZH
     IT	                APJ6JRA9NG5V4
     UK	                A1F83G8C2ARO7P
-
+    
     '''
-
+    
     counter = 1
     results = []
     # Provide credentials
