@@ -1,5 +1,4 @@
 import requests, csv, re, sys
-# from urlparse import urlparse
 from urllib.parse import urlparse
 from boto.mws.connection import MWSConnection
 from unidecode import unidecode
