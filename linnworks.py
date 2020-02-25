@@ -105,7 +105,7 @@ root = tk.Tk()
 root.withdraw()
 file_path = filedialog.askopenfilename()
 bcodes = read_filenames_from_csv(file_path)
-results = amazonbarcodesearch(bcodes, "", "") #add marketplace ID and barcode ID here
+results = amazonbarcodesearch(bcodes, '', '') #add marketplace ID and barcode type here
 output_csv(results, file_path)
 
 
